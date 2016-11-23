@@ -1,0 +1,20 @@
+---
+#
+# tasks file for ansible-role-sshd
+#
+# vim:et:ts=2:ft=ansible
+
+- name: Install public keys
+  lineinfile: dest="/etc/ssh/{{ _sshd.trusted_user_ca.filename }}" line='{{ item }}' insertbefore='EOF' create=yes owner=root group=root mode=0644
+  with_items: "{{ _sshd.trusted_user_ca.public_keys }}"
+  when: _sshd.trusted_user_ca is defined
+  notify:
+    - Reload sshd
+
+- name: Generate sshd_config
+  template: src="{{ item }}.j2" dest="/{{ item }}" owner=root group=root mode=0644 validate="sshd -t -f %s"
+  with_items:
+    - "etc/ssh/sshd_config"
+  notify:
+    - Reload sshd
+
