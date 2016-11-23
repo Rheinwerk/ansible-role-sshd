@@ -34,10 +34,10 @@ PrintLastLog yes
 PrintMotd no
 
 ChallengeResponseAuthentication no
-PasswordAuthentication {{ (_sshd.auth_methods|default({})).allow_password|default("no") }}
+PasswordAuthentication {{ (_sshd.auth_methods|default({})).allow_password|default('no') }}
 PermitEmptyPasswords no
 PermitRootLogin without-password
-PubkeyAuthentication {{ (_sshd.auth_methods|default({})).allow_password|default("yes") }}
+PubkeyAuthentication {{ (_sshd.auth_methods|default({})).allow_password|default('yes') }}
 RSAAuthentication yes
 RhostsRSAAuthentication no
 
