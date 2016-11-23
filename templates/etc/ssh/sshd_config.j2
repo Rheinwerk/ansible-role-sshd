@@ -34,10 +34,10 @@ PrintLastLog yes
 PrintMotd no
 
 ChallengeResponseAuthentication no
-PasswordAuthentication {% if (_sshd.auth_methods|default({})).allow_password|default(false) %}yes{% else %}no{% endif%}
+PasswordAuthentication {%+ if (_sshd.auth_methods|default({})).allow_password|default(false) %}yes{% else %}no{% endif %}
 PermitEmptyPasswords no
 PermitRootLogin without-password
-PubkeyAuthentication {% if (_sshd.auth_methods|default({})).allow_password|default(true) %}yes{% else %}no{% endif %}
+PubkeyAuthentication {%+ if (_sshd.auth_methods|default({})).allow_password|default(true) %}yes{% else %}no{% endif %}
 RSAAuthentication yes
 RhostsRSAAuthentication no
 
