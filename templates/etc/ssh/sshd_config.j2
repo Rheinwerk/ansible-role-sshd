@@ -8,10 +8,19 @@ ListenAddress {{ addr }}
 TCPKeepAlive yes
 Protocol 2
 
+{% if _sshd.host_keys is defined %}
+{% for hk in _sshd.host_keys %}
+HostKey /etc/ssh/{{ hk.filename }}
+{% endfor %}
+{% else %}
 HostKey /etc/ssh/ssh_host_dsa_key
 HostKey /etc/ssh/ssh_host_ecdsa_key
 HostKey /etc/ssh/ssh_host_ed25519_key
 HostKey /etc/ssh/ssh_host_rsa_key
+{% endif %}
+{% if _sshd.host_certificate is defined %}
+HostCertificate /etc/ssh/{{ _sshd.host_certificate.filename }}
+{% endif %}
 
 HostbasedAuthentication no
 IgnoreRhosts yes

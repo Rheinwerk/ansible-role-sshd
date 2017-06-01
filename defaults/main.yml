@@ -11,6 +11,13 @@ _sshd:
     filename: trusted-user-ca-certs.pub
     public_keys:
       - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDUQjZp/DsQO8PMEfdcCWYFwFhPbtCajXyqmwltnSmaBEMGMRzJN1q4wSBPe50JIVCjZWrgqAuU5D3teU6UOzqMKtBNK/HC5zI0uR8QL9dtiG+hNnFNJ+psgqGlXakuZYAW6WNd3EsKBd6tuLl8DZyl4pxiyjUypWX99YFHK32Zrsya5bFj21/u9clr26jfu4rSlM/qUfO4bBuzLKgiCDQZEpGhu8hapwAm6yVt/JLemIDtzGRaasTud1UiB6R7VOIIFeR+cPoKpmBWT2P8zOpERQeIUKiuICCPVz79oUDI7TEkEqngHA7prQKdDVzbNwhK7pJYoaAVkK+D51VtzrO3 Demo CA"
+#  host_keys:
+#    - filename: ssh_host_rsa_key
+#      private_key: "{{ from_vault }}"
+#      public_key: "ssh-rsa AAAA...."
+#  host_certificate:
+#    filename: ssh_host_rsa_key-cert.pub
+#    certificate: "ssh-rsa-cert-v01@openssh.com AAAA...."
   auth_methods:
     allow_password: no
     allow_pubkey: yes
