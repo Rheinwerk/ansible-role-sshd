@@ -15,12 +15,16 @@
     - name: Install Host Keys - Private
       copy: content="{{ item.private_key }}" dest="/etc/ssh/{{ item.filename }}" owner=root group=root mode=0600
       with_items: "{{ _sshd.host_keys }}"
+      loop_control:
+        label: "{{ item.filename }}"
       notify:
         - Reload sshd
 
     - name: Install Host Keys - Public
       copy: content="{{ item.public_key }}" dest="/etc/ssh/{{ item.filename }}.pub" owner=root group=root mode=0644
       with_items: "{{ _sshd.host_keys }}"
+      loop_control:
+        label: "{{ item.filename }}"
       notify:
         - Reload sshd
   when: _sshd.host_keys is defined
