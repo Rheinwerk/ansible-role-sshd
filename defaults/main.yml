@@ -18,6 +18,8 @@ _sshd:
 #  host_certificate:
 #    filename: ssh_host_rsa_key-cert.pub
 #    certificate: "ssh-rsa-cert-v01@openssh.com AAAA...."
+#  authorized_keys_files:
+#    - "/etc/ssh/authorized_keys"
   auth_methods:
     allow_password: no
     allow_pubkey: yes
