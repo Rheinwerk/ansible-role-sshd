@@ -17,6 +17,7 @@
       with_items: "{{ _sshd.host_keys }}"
       loop_control:
         label: "{{ item.filename }}"
+      no_log: yes
       notify:
         - Reload sshd
 
