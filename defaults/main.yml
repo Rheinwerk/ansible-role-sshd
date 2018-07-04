@@ -32,4 +32,3 @@ _sshd:
   # Notice: allow_groups will be ignored if allow_users is defined
   allow_groups:
     - allowed_group
-

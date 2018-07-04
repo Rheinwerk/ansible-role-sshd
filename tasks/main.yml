@@ -40,4 +40,3 @@
     - "etc/ssh/sshd_config"
   notify:
     - Reload sshd
-
