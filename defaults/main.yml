@@ -21,8 +21,7 @@ _sshd:
 #    - "/etc/ssh/authorized_keys"
   authorized_principals:
     filename_pattern: "%u_principals"
-    filename:
-      - "admin_principals"
+    filename: "admin_principals"
     principals:
       - "demo-1"
       - "demo-2"
