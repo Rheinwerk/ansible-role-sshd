@@ -22,9 +22,9 @@
   template:
     src: "/etc/ssh/authorized_principals.j2"
     dest: "/etc/ssh/{{ _sshd.authorized_principals.filename }}"
-      owner: "root"
-      group: "root"
-      mode: "0644"
+    owner: "root"
+    group: "root"
+    mode: "0644"
   when: _sshd.authorized_principals is defined
   notify:
     - Reload sshd
