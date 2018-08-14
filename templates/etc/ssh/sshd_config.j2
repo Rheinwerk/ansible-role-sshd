@@ -61,7 +61,7 @@ TrustedUserCAKeys /etc/ssh/{{ _sshd.trusted_user_ca.filename }}
 {% endif %}
 
 {% if _sshd.authorized_principals is defined %}
-AuthorizedPrincipalsFile /etc/ssh/{{ _sshd_.authorized_principals.filename_pattern }}
+AuthorizedPrincipalsFile /etc/ssh/{{ _sshd.authorized_principals.filename_pattern }}
 {% endif %}
 
 {% if _sshd.deny_users is defined %}
