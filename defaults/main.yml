@@ -20,6 +20,13 @@ _sshd:
 #    certificate: "ssh-rsa-cert-v01@openssh.com AAAA...."
 #  authorized_keys_files:
 #    - "/etc/ssh/authorized_keys"
+  authorized_principals:
+    filename_pattern: "%u_principals"
+    filename:
+      - "admin_principals"
+    principals:
+      - "demo-1"
+      - "demo-2"
   auth_methods:
     allow_password: no
     allow_pubkey: yes
@@ -32,3 +39,4 @@ _sshd:
   # Notice: allow_groups will be ignored if allow_users is defined
   allow_groups:
     - allowed_group
+
