@@ -7,7 +7,7 @@
   lineinfile:
     dest: "/etc/ssh/{{ _sshd.trusted_user_ca.filename }}"
     line: "{{ item }}"
-    insertbefore: "EOF"
+    insertafter: "EOF"
     create: yes
     owner: root
     group: root
