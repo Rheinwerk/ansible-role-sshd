@@ -24,8 +24,6 @@ HostCertificate /etc/ssh/{{ _sshd.host_certificate.filename }}
 
 HostbasedAuthentication no
 IgnoreRhosts yes
-KeyRegenerationInterval 3600
-ServerKeyBits 1024
 StrictModes yes
 
 Subsystem sftp /usr/lib/openssh/sftp-server
@@ -34,7 +32,6 @@ X11Forwarding no
 
 LogLevel INFO
 SyslogFacility AUTH
-UsePrivilegeSeparation yes
 UsePAM yes
 
 AcceptEnv LANG LC_*
@@ -49,8 +46,6 @@ PermitEmptyPasswords no
 PermitRootLogin without-password
 PubkeyAuthentication {% if (_sshd.auth_methods|default({})).allow_password|default(true) %}yes{% else %}no{% endif %}
 
-RSAAuthentication yes
-RhostsRSAAuthentication no
 
 {% if _sshd.authorized_keys_files is defined %}
 AuthorizedKeysFile {{ _sshd.authorized_keys_files|join(" ") }}
