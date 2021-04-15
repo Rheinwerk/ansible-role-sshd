@@ -51,8 +51,11 @@ PubkeyAuthentication {% if (_sshd.auth_methods|default({})).allow_password|defau
 AuthorizedKeysFile {{ _sshd.authorized_keys_files|join(" ") }}
 {% endif %}
 
-{% if _sshd.trusted_user_ca %}
+{% if _sshd.trusted_user_ca is defined %}
 TrustedUserCAKeys /etc/ssh/{{ _sshd.trusted_user_ca.filename }}
+{% if _sshd.trusted_user_ca.signature_algorithms is defined %}
+CASignatureAlgorithms {{ _sshd.trusted_user_ca.signature_algorithms }}
+{% endif %}
 {% endif %}
 
 {% if _sshd.authorized_principals is defined %}
