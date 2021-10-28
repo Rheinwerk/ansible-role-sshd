@@ -5,7 +5,7 @@ This role can be used to set up OpenSSH's `sshd_config`.
 It allows the configuration of trusted Root CA keys, allowed user and
 groups etc.
 
-[![Build Status](https://travis-ci.org/Rheinwerk/ansible-role-sshd.svg?branch=master)](https://travis-ci.org/Rheinwerk/ansible-role-sshd)
+[![Build Status](https://github.com/Rheinwerk/ansible-role-sshd/actions/workflows/ci.yml/badge.svg)](https://github.com/Rheinwerk/ansible-role-sshd/actions/workflows/ci.yml)
 
 Requirements
 ------------
