@@ -1,10 +1,14 @@
 ---
 - name: Reload sshd Debian
   listen: Reload sshd
-  service: name=ssh state=reloaded
+  service:
+    name: ssh
+    state: reloaded
   when: ansible_distribution == "Debian" or ansible_distribution == "Ubuntu"
 
 - name: Reload sshd RedHat
   listen: Reload sshd
-  service: name=sshd state=reloaded
+  service:
+    name: sshd
+    state: reloaded
   when: ansible_distribution == "Amazon" or ansible_distribution == "RedHat"

@@ -28,7 +28,8 @@
   notify:
     - Reload sshd
 
-- block:
+- name: Host keys
+  block:
     - name: Install Host Keys - Private
       copy:
         content: "{{ item.private_key }}"
