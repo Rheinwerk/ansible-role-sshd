@@ -28,7 +28,9 @@
   notify:
     - Reload sshd
 
-- block:
+- name: Host keys
+  when: _sshd.host_keys is defined
+  block:
     - name: Install Host Keys - Private
       copy:
         content: "{{ item.private_key }}"
@@ -55,7 +57,6 @@
         label: "{{ item.filename }}"
       notify:
         - Reload sshd
-  when: _sshd.host_keys is defined
 
 - name: Install Host Certificate
   copy:
