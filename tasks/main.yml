@@ -4,7 +4,7 @@
 #
 # vim:et:ts=2:ft=ansible
 - name: Install Trusted User CA Public Keys
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: "/etc/ssh/{{ _sshd.trusted_user_ca.filename }}"
     line: "{{ item }}"
     insertafter: "EOF"
@@ -18,7 +18,7 @@
     - Reload sshd
 
 - name: Create Trusted Principals File
-  template:
+  ansible.builtin.template:
     src: "etc/ssh/authorized_principals.j2"
     dest: "/etc/ssh/{{ _sshd.authorized_principals.filename }}"
     owner: "root"
@@ -32,7 +32,7 @@
   when: _sshd.host_keys is defined
   block:
     - name: Install Host Keys - Private
-      copy:
+      ansible.builtin.copy:
         content: "{{ item.private_key }}"
         dest: "/etc/ssh/{{ item.filename }}"
         owner: root
@@ -46,7 +46,7 @@
         - Reload sshd
 
     - name: Install Host Keys - Public
-      copy:
+      ansible.builtin.copy:
         content: "{{ item.public_key }}"
         dest: "/etc/ssh/{{ item.filename }}.pub"
         owner: root
@@ -59,7 +59,7 @@
         - Reload sshd
 
 - name: Install Host Certificate
-  copy:
+  ansible.builtin.copy:
     content: "{{ _sshd.host_certificate.certificate }}"
     dest: "/etc/ssh/{{ _sshd.host_certificate.filename }}"
     owner: root
@@ -68,7 +68,7 @@
   when: _sshd.host_certificate is defined
 
 - name: Generate sshd_config
-  template:
+  ansible.builtin.template:
     src: "{{ item }}.j2"
     dest: "/{{ item }}"
     owner: root
