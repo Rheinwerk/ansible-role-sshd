@@ -19,6 +19,10 @@
       with_items:
         - openssh-server
 
+    - name: debugs
+      ansible.builtin.debug:
+        var: ansible_virtualization_type
+
     # https://github.com/microsoft/WSL/issues/3621
     - name: Create /run/sshd inside containers
       ansible.builtin.file:
