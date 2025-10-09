@@ -1,6 +1,5 @@
 galaxy_info:
-  author: Daniel Schneller
-  namespace: rheinwerk
+  author: rheinwerk
   role_name: sshd
   description: Sets up sshd to allow user logins with SSH certificates
   company: Rheinwerk
